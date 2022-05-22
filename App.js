@@ -8,6 +8,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Main from './src/Home/Main';
 import Users from './src/Users/userList';
 import Posts from './src/Posts/postList';
+import UserDetail from './src/Users/userDetails';
+import PostDetail from './src/Posts/postDetails';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -17,7 +19,9 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Home Page" component={Main} />
           <Stack.Screen name="Users" component={Users} />
+          <Stack.Screen name="UserDetail" component={UserDetail} />
           <Stack.Screen name="Posts" component={Posts} />
+          <Stack.Screen name="PostDetail" component={PostDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

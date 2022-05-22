@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements'
 
-const Users = ({ navigation }) => {
+const Users = ({ route,navigation }) => {
     const [users, getUsers] = useState([]);
 
     useEffect(() => {
@@ -23,11 +23,14 @@ const Users = ({ navigation }) => {
         return (
             <ListItem bottomDivider>
                 <ListItem.Content>
-                    <ListItem.Title>{item.name}</ListItem.Title>
+                    <ListItem.Title onPress={() => { goDetail(item.id) }}>{item.name}</ListItem.Title>
                     <ListItem.Subtitle>{item.username}</ListItem.Subtitle>
                 </ListItem.Content>
             </ListItem>
         )
+    }
+    const goDetail = (id) => {
+        navigation.navigate('UserDetail', { id: id })
     }
     return (
         <View style={styles.container}>
@@ -49,6 +52,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#e6e6fa",
     }
+    
 })
 
 export default Users
