@@ -2,59 +2,64 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { ListItem } from 'react-native-elements'
-import { Card } from 'react-native-elements/dist/card/Card';
+import { ListItem, Card } from 'react-native-elements'
 
 const UserDetail = ({ route, navigation }) => {
     const [users, getDetail] = useState([]);
-    //const { id } = route.params;
+    const { id } = route.params;
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users' + id)
-            .then(res => res.json())
-            .then((users) => {
+        getUserDetails(id);
 
-                getDetail(users);
-
-            })
     }, []);
 
-   
+    const getUserDetails = (id) => {
+        fetch('https://jsonplaceholder.typicode.com/users/' + id)
+            .then(res => res.json())
+            .then((data) => {
 
-    const renderUsers = ({ item }) => {
-        return (
-            <ListItem.Content>
-                <View>
-                    <ListItem.Title style={styles.textStyle}>{item.email}</ListItem.Title>
-                    <ListItem.Subtitle>{item.username}</ListItem.Subtitle>
-                </View>
-            </ListItem.Content>
-        )
+                getDetail(data);
+
+            })
     }
+
+
     return (
         <View style={styles.container}>
             {
-                <Card
-                    data={users}
-                    renderItem={renderUsers}
-                >
-
+                <Card>
+                    <ListItem>
+                        <ListItem.Content>
+                            <View>
+                                <ListItem.Title>{users.name}</ListItem.Title>
+                                <Card.Divider />
+                                <ListItem.Subtitle style={styles.subtitleStyle}>Username : {users.username}</ListItem.Subtitle>
+                                <ListItem.Subtitle style={styles.subtitleStyle}>Email : {users.email}</ListItem.Subtitle>
+                                <ListItem.Subtitle style={styles.subtitleStyle}>Phone : {users.phone}</ListItem.Subtitle>
+                                <ListItem.Subtitle style={styles.subtitleStyle}>Web Site : {users.website}</ListItem.Subtitle>
+                                {/* <ListItem.Subtitle style={styles.subtitleStyle}> Address : {users.address.city}</ListItem.Subtitle>
+                                <ListItem.Subtitle style={styles.subtitleStyle}> Company : {users.company.name}</ListItem.Subtitle> */}
+                            </View>
+                        </ListItem.Content>
+                    </ListItem>
                 </Card>
             }
         </View>
     )
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#e6e6fa",
-    }, textStyle: {
-        color: "Black",
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontFamily: 'Tahoma'
-
+    },
+    subtitleStyle: {
+        marginVertical: 5,
+        fontWeight: '200'
+    },
+    titleStyle:{
+        fontWeight: 'bold'
     }
 })
 

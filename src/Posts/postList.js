@@ -1,14 +1,13 @@
 
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements'
-import AnimatedFlatList from "react-native-flatlist-animated";
 
 const Posts = ({ route, navigation }) => {
-
     const [posts, getPosts] = useState([]);
+
     useEffect(() => {
 
         fetch('https://jsonplaceholder.typicode.com/posts')
@@ -20,27 +19,34 @@ const Posts = ({ route, navigation }) => {
             })
 
     }, []);
-    const renderPosts = ({ item }) => {
+    const renderUsers = ({ item }) => {
         return (
-            <Text onPress={() => { goDetail(item.id) }}>{item.title}</Text>
+            <ScrollView>
+                <ListItem bottomDivider>
+                    <ListItem.Content>
+                        <ListItem.Subtitle onPress={() => { goDetail(item.id) }}>{item.title}</ListItem.Subtitle>
+                    </ListItem.Content>
+                </ListItem>
+            </ScrollView>
+
         )
     }
     const goDetail = (id) => {
         navigation.navigate('PostDetail', { id: id })
     }
-    
     return (
         <View style={styles.container}>
             {
-                <AnimatedFlatList
-                data={posts}
-                style={{ width: "100%" }}
-                itemContainerHeight={50}
-                renderItem={renderPosts}
-              />
+                <FlatList 
+                    data={posts}
+                    renderItem={renderUsers}
+                >
+
+                </FlatList>
             }
         </View>
     )
+
 }
 
 const styles = StyleSheet.create({
@@ -48,6 +54,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#e6e6fa",
     }
-    
+
 })
+
 export default Posts
+
+
+
+

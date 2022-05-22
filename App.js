@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Home Page" component={Main} />
           <Stack.Screen name="Users" component={Users} />
-          <Stack.Screen name="UserDetail" component={UserDetail} />
+          <Stack.Screen options={({ route }) => ({ title: route.params.title })} name="UserDetail" component={UserDetail} />
           <Stack.Screen name="Posts" component={Posts} />
           <Stack.Screen name="PostDetail" component={PostDetail} />
         </Stack.Navigator>

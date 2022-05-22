@@ -23,14 +23,14 @@ const Users = ({ route,navigation }) => {
         return (
             <ListItem bottomDivider>
                 <ListItem.Content>
-                    <ListItem.Title onPress={() => { goDetail(item.id) }}>{item.name}</ListItem.Title>
+                    <ListItem.Title onPress={() => { goDetail(item.id,item.name) }}>{item.name}</ListItem.Title>
                     <ListItem.Subtitle>{item.username}</ListItem.Subtitle>
                 </ListItem.Content>
             </ListItem>
         )
     }
-    const goDetail = (id) => {
-        navigation.navigate('UserDetail', { id: id })
+    const goDetail = (id,name) => {
+        navigation.navigate('UserDetail', { id: id,title:name  })
     }
     return (
         <View style={styles.container}>
