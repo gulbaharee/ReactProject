@@ -31,7 +31,9 @@
     "@babel/core": "^7.12.9"
   },
   "rnpm": {
-    "assets": "./assets/fonts/"
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "private": true
 }

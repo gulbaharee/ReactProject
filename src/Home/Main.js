@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         color: "#000000",
         fontSize: 16,
         fontWeight: 'bold',
-        fontFamily: 'Titillium Web',
+        fontFamily: 'TitilliumWeb-Bold',
         textAlign: 'center'
 
     }
