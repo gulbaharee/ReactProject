@@ -2,6 +2,21 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import PostDetail from './postDetails';
+
+const PostStack = createStackNavigator();
+
+const PostScreen = ()=> {
+    return(
+        <PostStack.Navigator>
+            <PostStack.Screen name='PostList' component={Posts}/>
+            <PostStack.Screen name ='PostDetail' component={PostDetail}/>
+        </PostStack.Navigator>
+       
+    )
+}
+export default PostScreen
 
 const Posts = ({ route, navigation }) => {
     const [posts, getPosts] = useState([]);
@@ -73,7 +88,6 @@ const styles = StyleSheet.create({
 
 })
 
-export default Posts
 
 
 

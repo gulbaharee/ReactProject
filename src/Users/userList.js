@@ -4,6 +4,21 @@ import { StyleSheet, View, Text, TouchableWithoutFeedback, Image } from 'react-n
 import { NavigationContainer } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements'
+import { createStackNavigator } from '@react-navigation/stack';
+import UserDetail from './userDetails';
+
+
+const UserStack = createStackNavigator();
+
+const UserScreen = () =>{
+    return(
+        <UserStack.Navigator>
+            <UserStack.Screen name ='UserList' component={Users}/>
+            <UserStack.Screen name='UserDetail' component={UserDetail} />
+        </UserStack.Navigator>
+    )
+}
+export default UserScreen
 
 const Users = ({ route, navigation }) => {
     const [users, getUsers] = useState([]);
@@ -134,7 +149,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Users
+
 
 
 
