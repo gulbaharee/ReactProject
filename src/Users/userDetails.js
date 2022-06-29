@@ -23,26 +23,34 @@ const UserDetail = ({ route, navigation }) => {
             })
     }
 
-
+    const goToDo = (id) => {
+        navigation.navigate('ToDoList', { id: id })
+    }
     return (
         <View style={styles.container}>
             {
-                <Card>
-                    <ListItem>
-                        <ListItem.Content>
-                            <View>
-                                <ListItem.Title>{users.name}</ListItem.Title>
-                                <Card.Divider />
-                                <ListItem.Subtitle style={styles.subtitleStyle}>Username : {users.username}</ListItem.Subtitle>
-                                <ListItem.Subtitle style={styles.subtitleStyle}>Email : {users.email}</ListItem.Subtitle>
-                                <ListItem.Subtitle style={styles.subtitleStyle}>Phone : {users.phone}</ListItem.Subtitle>
-                                <ListItem.Subtitle style={styles.subtitleStyle}>Web Site : {users.website}</ListItem.Subtitle>
-                                {/* <ListItem.Subtitle style={styles.subtitleStyle}> Address : {users.address.city}</ListItem.Subtitle>
+                <View>
+                    <Card>
+                        <ListItem>
+                            <ListItem.Content>
+                                <View>
+                                    <ListItem.Title>{users.name}</ListItem.Title>
+                                    <Card.Divider />
+                                    <ListItem.Subtitle style={styles.subtitleStyle}>Username : {users.username}</ListItem.Subtitle>
+                                    <ListItem.Subtitle style={styles.subtitleStyle}>Email : {users.email}</ListItem.Subtitle>
+                                    <ListItem.Subtitle style={styles.subtitleStyle}>Phone : {users.phone}</ListItem.Subtitle>
+                                    <ListItem.Subtitle style={styles.subtitleStyle}>Web Site : {users.website}</ListItem.Subtitle>
+                                    {/* <ListItem.Subtitle style={styles.subtitleStyle}> Address : {users.address.city}</ListItem.Subtitle>
                                 <ListItem.Subtitle style={styles.subtitleStyle}> Company : {users.company.name}</ListItem.Subtitle> */}
-                            </View>
-                        </ListItem.Content>
-                    </ListItem>
-                </Card>
+                                </View>
+                            </ListItem.Content>
+                        </ListItem>
+                    </Card>
+                    <Card>
+                        <Text onPress={() => { goToDo(users.id)}}>TO DO</Text>
+                    </Card>
+                </View>
+
             }
         </View>
     )
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         fontWeight: '200'
     },
-    titleStyle:{
+    titleStyle: {
         fontWeight: 'bold'
     }
 })

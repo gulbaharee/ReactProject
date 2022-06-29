@@ -6,6 +6,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 import UserDetail from './userDetails';
+import ToDoList from './toDoPage.js';
 
 
 const UserStack = createStackNavigator();
@@ -14,7 +15,8 @@ const UserScreen = () =>{
     return(
         <UserStack.Navigator>
             <UserStack.Screen name ='UserList' component={Users}/>
-            <UserStack.Screen name='UserDetail' component={UserDetail} />
+            <UserStack.Screen options={({ route }) => ({ title: route.params.title })} name='UserDetail' component={UserDetail} />
+            <UserStack.Screen options={({ route }) => ({ title: 'To Do' })} name='ToDoList' component={ToDoList} />
         </UserStack.Navigator>
     )
 }
@@ -24,16 +26,18 @@ const Users = ({ route, navigation }) => {
     const [users, getUsers] = useState([]);
 
     useEffect(() => {
-
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(res => res.json())
-            .then((data) => {
-
-                getUsers(data);
-
-            })
-
+        getUsersList();
     }, []);
+
+    const getUsersList = ()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then((data) => {
+
+            getUsers(data);
+
+        })
+    }
     const renderUsers = ({ item }) => {
         return (
             <TouchableWithoutFeedback
