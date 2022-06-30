@@ -14,9 +14,9 @@ const UserStack = createStackNavigator();
 const UserScreen = () =>{
     return(
         <UserStack.Navigator>
-            <UserStack.Screen name ='UserList' component={Users}/>
-            <UserStack.Screen options={({ route }) => ({ title: route.params.title })} name='UserDetail' component={UserDetail} />
-            <UserStack.Screen options={({ route }) => ({ title: 'To Do' })} name='ToDoList' component={ToDoList} />
+            <UserStack.Screen name ='User List' component={Users}/>
+            <UserStack.Screen options={({ route }) => ({ title: route.params.title })} name='User Detail' component={UserDetail} />
+            <UserStack.Screen options={({ route }) => ({ title: 'To Do' })} name='To Do List' component={ToDoList} />
         </UserStack.Navigator>
     )
 }

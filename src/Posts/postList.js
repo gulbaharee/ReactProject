@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PostDetail from './postDetails';
 import Comments from './comment';
@@ -11,8 +10,8 @@ const PostStack = createStackNavigator();
 const PostScreen = ()=> {
     return(
         <PostStack.Navigator>
-            <PostStack.Screen name='PostList' component={Posts}/>
-            <PostStack.Screen name ='PostDetail' component={PostDetail}/>
+            <PostStack.Screen name='Post List' component={Posts}/>
+            <PostStack.Screen name ='Post Detail' component={PostDetail}/>
             <PostStack.Screen name='Comments' component={Comments}/>
         </PostStack.Navigator>
        
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#e6e6fa",
-        margin:10
     },
     textSyle: {
         fontSize: 17,
@@ -73,24 +71,24 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     scrollStyle: {
-        height: 60,
-        width: '100%',
-        borderRadius: 5,
+        height: 90,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#fffaf0',
-        borderColor: '#000080',
-        borderWidth: 1,
-        borderStyle: 'solid',
+        borderRadius: 15,
+        shadowColor: '#c0c0c0',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 6,
+        elevation: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 16,
+        paddingRight: 14,
         marginTop: 6,
         marginBottom: 6,
         marginLeft: 16,
         marginRight: 16,
-        paddingLeft: 16,
-        paddingRight: 14,
     }
 
 })
-
-
-
-
-

@@ -26,7 +26,6 @@ const App = () => {
           <Stack.Screen name="PostDetail" component={PostDetail} />
         </Stack.Navigator> */}
         <Tab.Navigator>
-          <Tab.Screen options={{ tabBarIcon: () => (<MaterialCommunityIcons name="home" size={40}></MaterialCommunityIcons>), headerShown: false}} name="Home"  component={Main} />
           <Tab.Screen options={{ tabBarIcon: () => (<MaterialCommunityIcons name="account-multiple" size={40}></MaterialCommunityIcons>),headerShown: false}} name="Users" component={Users} />
           <Tab.Screen options={{ tabBarIcon: () => (<MaterialCommunityIcons name="jira" size={40}></MaterialCommunityIcons>),headerShown: false}} name="Posts" component={Posts} />
           <Tab.Screen options={{ tabBarIcon: () => (<MaterialCommunityIcons name="jira" size={40}></MaterialCommunityIcons>),headerShown: false}} name="Albums" component={Albums} />

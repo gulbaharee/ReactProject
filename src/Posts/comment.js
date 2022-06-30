@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ListItem, Card } from 'react-native-elements'
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import axios from 'axios';
 
 const Comments = ({ route, navigation }) => {
@@ -21,26 +21,26 @@ const Comments = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
-            {
+            <ScrollView>
+                {
+                    comments.map((item, index) => {
+                        return <>
+                            <Card>
+                                <ListItem>
+                                    <ListItem.Content>
+                                        <View key={index}>
+                                            <ListItem.Title>{item.name}</ListItem.Title>
+                                            <Card.Divider />
+                                            <ListItem.Subtitle>{item.body}</ListItem.Subtitle>
+                                        </View>
+                                    </ListItem.Content>
+                                </ListItem>
+                            </Card>
+                        </>
+                    })
+                }
+            </ScrollView>
 
-                comments.map((item, index) => {
-                    return <>
-                        <Card>
-                            <ListItem>
-                                <ListItem.Content>
-                                    <View key={index}>
-                                        <ListItem.Title>{item.name}</ListItem.Title>
-                                        <Card.Divider />
-                                        <ListItem.Subtitle>{item.body}</ListItem.Subtitle>
-                                    </View>
-                                </ListItem.Content>
-                            </ListItem>
-                        </Card>
-                    </>
-                })
-
-
-            }
         </View>
     )
 

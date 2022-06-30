@@ -1,9 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { ListItem, Card } from 'react-native-elements'
-import Comments from './comment';
 
 const PostDetail =({route, navigation}) => {
     const [posts, getDetail] = useState([]);
