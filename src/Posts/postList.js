@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PostDetail from './postDetails';
+import Comments from './comment';
 
 const PostStack = createStackNavigator();
 
@@ -12,6 +13,7 @@ const PostScreen = ()=> {
         <PostStack.Navigator>
             <PostStack.Screen name='PostList' component={Posts}/>
             <PostStack.Screen name ='PostDetail' component={PostDetail}/>
+            <PostStack.Screen name='Comments' component={Comments}/>
         </PostStack.Navigator>
        
     )
